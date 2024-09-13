@@ -1,0 +1,67 @@
+symbol,company_name,overview.listing_board,overview.industry,overview.sub_industry,overview.sector,overview.sub_sector,overview.market_cap,overview.market_cap_rank,overview.address,overview.employee_num,overview.listing_date,overview.website,overview.phone,overview.email,overview.last_close_price,overview.latest_close_date,overview.daily_close_change
+AGRO.JK,PT Bank Raya Indonesia Tbk,Main,Banks,Banks,Financials,Banks,6531491823616,171,Menara BRILiaN Lt. 20 Jalan Gatot Subroto No. 177 A Kel. Menteng Dalam Kecamatan Tebet Jakarta Selatan DKI Jakarta,709,2003-08-08,bankraya.co.id,021-50931300,humas@bankraya.co.id,264,2024-09-09,-0.0222222222222222
+AGRS.JK,PT Bank IBK Indonesia Tbk.,Development,Banks,Banks,Financials,Banks,3552532496384,241,Wisma GKBI Suite UG-01 Jl. Jend. Sudirman No. 28 Jakarta 10210 Indonesia,521,2014-12-22,www.ibk.co.id,+62 21 5790 8888,corsec@ibk.co.id,75,2024-09-09,-0.0131578947368421
+AMAR.JK,PT Bank Amar Indonesia Tbk.,Development,Banks,Banks,Financials,Banks,3999041323008,227,"Jl. Basuki Rahmad No. 109, Surabaya, 60271",1146,2020-01-09,www.amarbank.co.id,(031) 99015959,corsec@amarbank.co.id,222,2024-09-09,-0.0176991150442478
+ARTO.JK,PT Bank Jago Tbk.,Main,Banks,Banks,Financials,Banks,38137153716224,53,"Menara BTPN Lt. 46 Jl. Dr. Ide Anak Agung Gde Agung Kav. 5.5-5.6, Jakarta Selatan",501,2016-01-12,www.jago.com,021-50927460 & 021-50927490,corporate.communications@jago.com,2780,2024-09-09,0.0
+BABP.JK,PT Bank MNC Internasional Tbk.,Development,Banks,Banks,Financials,Banks,3289965920256,245,"Gedung MNC Bank Tower Lantai 8, Jl. Kebon Sirih No.21-27, Jakarta 10340",940,2002-07-15,www.mncbank.co.id,2980-5555,corporate.legal@mncbank.co.id,74,2024-09-09,0.0
+BACA.JK,PT Bank Capital Indonesia Tbk,Main,Banks,Banks,Financials,Banks,2613843066880,275,"Menara Jamsostek Lantai 6, Jl, Gatot Subroto No. 38",793,2007-10-04,www.bankcapital.co.id,(021)27938989,helpdesk.corpsec@bankcapital.co.id,131,2024-09-09,0.0
+BANK.JK,PT Bank Aladin Syariah Tbk,Main,Banks,Banks,Financials,Banks,12647943634944,114,"Gedung Millennium Centennial Center Lt 7 Jl. Jenderal Sudirman Kav. 25 Jakarta Selatan, 12920",294,2021-02-01,www.aladinbank.id,+62 21 3970 8008,corsec@aladinbank.id,865,2024-09-09,-0.00574712643678161
+BBCA.JK,PT Bank Central Asia Tbk.,Main,Banks,Banks,Financials,Banks,1266650682753024,2,"Menara BCA, Grand Indonesia
+Jalan MH Thamrin No. 1
+Jakarta 10310",27547,2000-05-31,www.bca.co.id,021-23588000,investor_relations@bca.co.id,10275,2024-09-09,-0.00242718446601942
+BBHI.JK,PT Allo Bank Indonesia Tbk,Main,Banks,Banks,Financials,Banks,21404344909824,85,"Menara Bank Mega, Lantai 5-6, Jalan Kapten P. Tendean No.12-14A, Jakarta Selatan 12790",483,2015-08-12,www.allobank.com,021-7990671-021-79184705-021-79182387,corsec@allobank.com,985,2024-09-09,-0.0100502512562814
+BBKP.JK,PT Bank KB Bukopin Tbk,Main,Banks,Banks,Financials,Banks,12212719583232,123,Gedung Bank KB Bukopin Jl. M.T. Haryono Kav.50-51 Jakarta 12770,2713,2006-07-10,www.kbbukopin.com,798-8266,investor.relations@kbbukopin.com; corsec@kbbukopin.com,65,2024-09-09,-0.0151515151515152
+BBMD.JK,PT Bank Mestika Dharma Tbk.,Development,Banks,Banks,Financials,Banks,8577658912768,145,"Jl. H. Zainul Arifin No. 118, Medan",1086,2013-07-08,www.bankmestika.com,061-4525800,corsec@bankmestika.co.id,2130,2024-09-09,0.0390243902439024
+BBNI.JK,PT Bank Negara Indonesia (Persero) Tbk,Main,Banks,Banks,Financials,Banks,213527033806848,10,"Grha BNI Lantai 24
+Jl. Jenderal Sudirman Kavling 1
+Jakarta Pusat 10220",27197,1996-11-25,www.bni.co.id,"021-2511946, 021-5728387",bni@bni.co.id,5725,2024-09-09,0.0132743362831858
+BBRI.JK,PT Bank Rakyat Indonesia (Persero) Tbk,Main,Banks,Banks,Financials,Banks,791728432873472,4,"Gedung BRI I Lantai 20
+Jl. Jenderal Sudirman Kav.44-46, Jakarta Pusat 10210",80257,2003-11-10,www.bri.co.id,021 - 575 1966,humas@bri.co.id; corsec@bri.co.id,5175,2024-09-09,-0.00956937799043062
+BBSI.JK,PT Krom Bank Indonesia Tbk,Development,Banks,Banks,Financials,Banks,15727801139200,102,"Jl. Ir. H.Juanda No.137 Lb. Siliwiangi Bandung - Jawa Barat, 40132",233,2020-09-07,www.bankbisnis.id,"(62-22) 2501787, 2511900",corsec@krom.id,4280,2024-09-09,0.0
+BBTN.JK,PT Bank Tabungan Negara (Persero) Tbk,Main,Banks,Banks,Financials,Banks,19648160464896,87,"Gedung Menara BTN, Jl.Gajah Mada No. 1, Jakarta 10130",11386,2009-12-17,www.btn.co.id,021-6336789,achmad.chaerul@btn.co.id,1400,2024-09-09,-0.00355871886120996
+BBYB.JK,PT Bank Neo Commerce Tbk.,Main,Banks,Banks,Financials,Banks,3700760248320,236,"Treasury Tower Lantai 60 Kawasan District 8, Lot 28, SCBD, Jalan Jenderal Sudirman Kav. 52-53 Jakarta 12190",1137,2015-01-13,http://www.bankneocommerce.co.id/,021-27094950  021-27094951,corsec@bankneo.co.id,280,2024-09-09,-0.020979020979021
+BCIC.JK,PT Bank JTrust Indonesia Tbk.,Development,Banks,Banks,Financials,Banks,1955869229056,330,"Gedung Sahid Sudirman Center, Lantai 33, Jl. jend.Sudirman No. 86 Jakarta Pusat 10220",913,1997-06-25,www.jtrustbank.co.id,021 2926 1111,,108,2024-09-09,0.0693069306930693
+BDMN.JK,PT Bank Danamon Indonesia Tbk,Main,Banks,Banks,Financials,Banks,25508964204544,75,"Menara Bank Danamon, Jl. HR. Rasuna Said, Blok C No 10, Kel. Karet, Kec. Setiabudi, Jakarta Selatan",23244,1989-12-06,http://www.danamon.co.id/,(021) 80645000,corporate.secretary@danamon.co.id,2610,2024-09-09,-0.00381679389312977
+BEKS.JK,PT Bank Pembangunan Daerah Banten Tbk.,Watchlist,Banks,Banks,Financials,Banks,147451625472,739,"Jl. Sudirman Lingkungan Kemang, Ruko Sembilan No. 4, 5 dan 6, Kel. Sumur Pecung, Serang, Banten",832,2001-07-13,www.bankbanten.co.id,0254 - 7917346,corporate.secretary@bankbanten.co.id,23,2024-09-09,0.0
+BGTG.JK,PT Bank Ganesha Tbk.,Development,Banks,Banks,Financials,Banks,1582085963776,365,"Wisma Hayam Wuruk Lt. 1-2, Jln. Hayam Wuruk No. 8, Jakarta Pusat 10120",280,2016-05-12,www.bankganesha.co.id,+6221-29109900 (Hunting),corpsect@bankganesha.co.id,66,2024-09-09,0.0153846153846154
+BINA.JK,PT Bank Ina Perdana Tbk.,Main,Banks,Banks,Financials,Banks,24600226299904,78,Ariobimo Sentral,540,2014-01-16,www.bankina.co.id,021 2525678,corp_sec@bankina.co.id,4010,2024-09-09,-0.00248756218905473
+BJBR.JK,Bank Pembangunan Daerah Jawa Barat dan Banten Tbk,Main,Banks,Banks,Financials,Banks,10468792991744,134,"Menara Bank Jabar Banten Jl. Naripan No. 12-14, Bandung 40111, Jawa Barat",9261,2010-07-08,www.bankjabarbanten.co.id,(022) 423 4868,c.trisna@bankjabar.co.id,995,2024-09-09,-0.005
+BJTM.JK,Bank Pembangunan Daerah Jawa Timur Tbk,Main,Banks,Banks,Financials,Banks,8633912393728,144,Jl Basuki Rachmad 98-104 Surabaya,4198,2012-07-12,www.bankjatim.co.id,(031) 5310090-99 ext.463,iru@bankjatim.co.id,575,2024-09-09,0.0
+BKSW.JK,PT Bank QNB Indonesia Tbk,Watchlist,Banks,Banks,Financials,Banks,2179796041728,315,"Revenue Tower, District 8, SCBD, Jl. Jenderal Sudirman Kav. 52-53, Jakarta 12190",389,2002-11-21,qnb.co.id,021-5155155,corporate.communication@qnb.co.id,62,2024-09-09,0.0
+BMAS.JK,PT Bank Maspion Indonesia Tbk.,Development,Banks,Banks,Financials,Banks,10409052471296,136,"Pakuwon Tower, Tunjungan Plaza 6 Lantai 32 & 33, Jln. Embong Malang No. 21 - 31, Surabaya",896,2013-07-11,www.bankmaspion.co.id,031-98588789,corsec@bankmaspion.co.id,575,2024-09-09,0.116504854368932
+BMRI.JK,PT Bank Mandiri (Persero) Tbk,Main,Banks,Banks,Financials,Banks,676666393231360,6,"Plaza Mandiri, Jl. Jend. Gatot Subroto Kav.36-38, Jakarta 12190",38769,2003-07-14,www.bankmandiri.co.id,5265045; 5265095 (Hunting),cma@bankmandiri.co.id,7250,2024-09-09,0.0
+BNBA.JK,Bank Bumi Arta Tbk,Development,Banks,Banks,Financials,Banks,2574880079872,280,"Jl. Wahid Hasyim No. 234-236
+Jakarta 10250",650,2006-06-01,www.bankbba.co.id,2300-455,lyvinia_sari@bankbba.co.id,760,2024-09-09,-0.0193548387096774
+BNGA.JK,PT Bank CIMB Niaga Tbk,Main,Banks,Banks,Financials,Banks,47133575086080,42,"Graha CIMB Niaga
+Jl. Jend. Sudirman Kav. 58
+Jakarta 12190",11035,1989-11-29,www.cimbniaga.com,"250-5252, 250-5353",Corporate.Secretary@cimbniaga.co.id,1890,2024-09-09,-0.00263852242744063
+BNII.JK,PT Bank Maybank Indonesia Tbk,Main,Banks,Banks,Financials,Banks,17681925275648,97,"Sentral Senayan III, 26th floor, Jl. Asia Afrika No. 8, Gelora Bung Karno Senayan, Jakarta 10270",9763,1989-11-21,www.maybank.co.id,021-29228888,Putu.Dewika.A@maybank.co.id,232,2024-09-09,0.00869565217391304
+BNLI.JK,Bank Permata Tbk,Development,Banks,Banks,Financials,Banks,43236651433984,45,"Gedung World Trade Center II, Jl. Jend. Sudirman Kav. 29-31, Jakarta  12920",6683,1990-01-15,www.permatabank.co.id,021-5237788,,1195,2024-09-09,0.0127118644067797
+BRIS.JK,PT Bank Syariah Indonesia Tbk,Main,Banks,Banks,Financials,Banks,120858760708096,16,"Gedung The Tower, Jalan Gatot Subroto No.27, Kel. Karet Semanggi, Kec. Setiabudi, Jakarta Selatan 12930",17234,2018-05-09,www.bankbsi.co.id,+62 21 30405999,corporate.secretary@bankbsi.co.id,2620,2024-09-09,-0.00380228136882129
+BSIM.JK,Bank Sinarmas Tbk,Main,Banks,Banks,Financials,Banks,16463026978816,100,"Sinar Mas Land Plaza - Menara 1 Lantai 8
+l. MH. Thamrin No. 51
+Jakarta 10350",4827,2010-12-13,www.banksinarmas.com,021-31990101,retno.t.wulandari@banksinarmas.com,835,2024-09-09,-0.0402298850574713
+BSWD.JK,Bank of India Indonesia Tbk,Watchlist,Banks,Banks,Financials,Banks,11066609238016,130,Jl. KH Samanhudi No. 37 RT 005 RW 003 Pasar Baru Sawah Besar Jakarta Pusat DKI Jakarta,228,2002-05-01,www.boiindonesia.co.id,021-3500007,corporate@boiindonesia.co.id,3000,2024-09-09,0.0
+BTPN.JK,PT Bank BTPN Tbk,Main,Banks,Banks,Financials,Banks,25124325556224,76,"Menara BTPN, CBD Mega Kuningan Lantai 29, Jl. Dr. Ide Anak Agung Gde Agung Kav. 5.5-5.6",29142,2008-03-12,www.btpn.com,021-300 26 200,corporate.secretary@btpn.com,2360,2024-09-09,0.0
+BTPS.JK,PT Bank BTPN Syariah Tbk.,Main,Banks,Banks,Financials,Banks,9513773039616,140,"Menara BTPN Lantai 12, CBD Mega Kuningan, Jl. DR Ide Anak Agung Gde Agung Kav. 5.5-5.6, Jakarta Selatan 12950",14428,2018-05-08,www.btpnsyariah.com,+62-21 300 26 400,corsec@btpnsyariah.com,1235,2024-09-09,-0.0275590551181102
+BVIC.JK,Bank Victoria International Tbk,Main,Banks,Banks,Financials,Banks,1302270050304,391,"Graha BIP Lantai 10, Jl. Gatot Subroto Kav. 23, Jakarta",718,1999-06-30,www.victoriabank.co.id,021-5228888,corsec@victoriabank.co.id,83,2024-09-09,0.0
+DNAR.JK,PT Bank Oke Indonesia Tbk.,Development,Banks,Banks,Financials,Banks,1418961616896,382,"Jl. Ir. H. Juanda No. 12, Jakarta Pusat",313,2014-07-11,www.okbank.co.id,021-2312633,corsec@okbank.co.id,84,2024-09-09,0.0
+INPC.JK,Bank Artha Graha Internasional Tbk,Main,Banks,Banks,Financials,Banks,1395414532096,386,"GEDUNG ARTHA GRAHA LT. 5, JL. JEND SUDIRMAN KAV. 52-53 SENAYAN KEBAYORAN BARU JAKARTA SELATAN DKI JAKARTA RAYA -12190",1437,1990-08-23,www.arthagraha.com,(021) 515-2168,co_secretary@ag.co.id,69,2024-09-09,0.0615384615384615
+MASB.JK,PT Bank Multiarta Sentosa Tbk,Development,Banks,Banks,Financials,Banks,4654672904192,201,"Grha Bank Mas
+Jl Setiabudi Selatan Kav.7-8, 
+Jakarta Selatan 12920",804,2021-06-30,www.bankmas.co.id,(021) 57906006,corsec@bankmas.co.id,3320,2024-09-09,0.0
+MAYA.JK,PT Bank Mayapada Internasional Tbk,Main,Banks,Banks,Financials,Banks,6175624527872,179,"Mayapada Tower Lt. 1
+Jl. Jend. Sudirman Kav. 28
+Jakarta",2857,1997-08-29,www.bankmayapada.com,021-5212288,corsec@bankmayapada.com,236,2024-09-09,0.0350877192982456
+MCOR.JK,PT Bank China Construction Bank Indonesia Tbk,Main,Banks,Banks,Financials,Banks,2995656327168,256,"Gedung Perkantoran Sahid Sudirman Center Lt. 15,Jl. Jend. Sudirman Kav. 86, Jakarta Pusat, 10220",1152,2007-07-03,idn.ccb.com,021-50821000,corsec@idn.ccb.com,79,2024-09-09,0.0128205128205128
+MEGA.JK,Bank Mega Tbk,Main,Banks,Banks,Financials,Banks,58998023782400,32,"Menara Bank Mega
+Jl. Kapten Tendean No.12-14A
+Jakarta 12970",4760,2000-04-17,www.bankmega.com,7917-5000,,5025,2024-09-09,0.00903614457831325
+NISP.JK,PT Bank OCBC NISP Tbk,Main,Banks,Banks,Financials,Banks,31205609177088,60,OCBC Tower Jl. Prof. Dr. Satrio Kav. 25 Jakarta Selatan 12940,6124,1994-10-20,www.ocbc.id,(021) 25533888,corporate.secretariat@ocbc.id,1360,2024-09-09,0.00740740740740741
+NOBU.JK,PT Bank Nationalnobu Tbk.,Development,Banks,Banks,Financials,Banks,4636632678400,202,"Gedung Graha Lippo Jl. Boulevard Diponegoro Nomor 101, Kelurahan Bencongan Indah, Kecamatan Kelapa Dua, Kabupaten Tangerang",1275,2013-05-20,www.nobubank.com,(021) 59990000,corsec@nobubank.com,620,2024-09-09,-0.008
+PNBN.JK,Bank Pan Indonesia Tbk,Main,Banks,Banks,Financials,Banks,32389617156096,58,"Panin Bank Center, Jl.Jend.Sudirman - Senayan, Jakarta 10270",10909,1982-12-29,www.panin.co.id,021-5735555 / 021-2700545,panin@panin.co.id,1345,2024-09-09,-0.0288808664259928
+PNBS.JK,PT Bank Panin Dubai Syariah Tbk.,Development,Banks,Banks,Financials,Banks,2057120907264,322,"Gedung Panin Life Center Lantai 3A, Jl. Letjend S. Parman Kav.91, Kota Bambu Utara Palmerah Jakarta Barat DKI Jakarta",503,2014-01-15,www.pdsb.co.id,(021) 56956100,corsec@pdsb.co.id,53,2024-09-09,0.0192307692307692
+SDRA.JK,PT Bank Woori Saudara Indonesia 1906 Tbk,Main,Banks,Banks,Financials,Banks,6787796828160,167,"Gedung Treasury Tower Lt. 26 & 27
+District 8, SCBD Lot. 28
+Jl. Jend. Sudirman Kav. 52 - 53
+Jakarta",1379,2006-12-15,www.bankwoorisaudara.com,(62-21) 50871906,saudara@bankwoorisaudara.com,462,2024-09-09,0.0

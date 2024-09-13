@@ -1,0 +1,288 @@
+{% extends "../layouts/base.html" %}
+
+{% block content %}
+<div class="content">
+    <div class="col-sm-1 text-right" style="margin-left: 70%; margin-top: 1rem; max-width:revert-layer; position: fixed; z-index: 100;">
+        <form  method="get" id="symbol-form">
+            <select style="background-color: rgb(255, 0, 255, 0.9);" name="symbol" id="symbol-select" class="form-control" onchange="document.getElementById('symbol-form').submit();">
+                {% for company in top_5_companies %}
+                    <option style="font-weight: 600;" value="{{ company.symbol }}" {% if company.symbol == selected_symbol %}selected{% endif %}>{{ company.symbol }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-chart">
+                <div class="card-header ">
+                    <div class="row">
+                        <div class="col-sm-9 text-left">
+                            <h5 class="card-category" style="font-size: 1.5rem; color: #ffffff; font-weight: 300;"">Revenue vs Earnings for {{ selected_symbol }}</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="">
+                    <div class="">
+                        <canvas id="financialChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-chart">
+                <div class="card-header ">
+                    <div class="row">
+                        <div class="col-sm-9 text-left">
+                            <h5 class="card-category" style="font-size: 1.5rem; color: #ffffff; font-weight: 300;"">Total Equity vs Total Liabilities for {{ selected_symbol }}</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="">
+                    <div class="">
+                        <canvas id="financialChart_1"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var companyData = JSON.parse('{{ company_data|escapejs }}');
+        var ctx = document.getElementById('financialChart').getContext('2d');
+        
+        function getSegmentColors(values) {
+            let segmentColors = [];
+            for (let i = 1; i < values.length; i++) {
+                if (values[i] > values[i - 1]) {
+                    segmentColors.push('rgba(0, 200, 0, 1)'); // Green for increase
+                } else {
+                    segmentColors.push('rgb(255, 0, 0)'); // Red for decrease
+                }
+            }
+            return segmentColors;
+        }
+
+
+        // chart revenue vs earnings
+        var revenueSegmentColors = getSegmentColors(companyData.revenue);
+        var earningsSegmentColors = getSegmentColors(companyData.earnings);
+    
+        function createDataset(label, data, baseColor, segmentColors) {
+            return {
+                label: label,
+                data: data,
+                borderColor: function(context) {
+                    return context.dataIndex > 0 ? segmentColors[context.dataIndex - 1] : baseColor;
+                },
+                borderWidth: 3,
+                pointBackgroundColor: function(context) {
+                    if (context.dataIndex === 0) return baseColor; // First point base color
+                    return segmentColors[context.dataIndex - 1];
+                },
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                fill: false, 
+                pointStyle: function(context) {
+                    if (context.dataIndex === 0) return 'circle';
+                    return companyData[label.toLowerCase()][context.dataIndex] > companyData[label.toLowerCase()][context.dataIndex - 1] ? 'triangle' : 'rectRot';
+                }
+            };
+        }
+    
+        var datasets = [
+            createDataset('Revenue', companyData.revenue, 'rgb(247, 155, 64, 0.8)', revenueSegmentColors),
+            createDataset('Earnings', companyData.earnings, 'rgb(0, 191, 255, 0.8)', earningsSegmentColors),
+        ];
+    
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: companyData.years, // X-axis labels (years)
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Rupiah',
+                            color: '#ffffff'
+                        },
+                        ticks: {
+                        callback: function(value, index, values) {
+                            if (value >= 1000000000000) {
+                                return 'Rp ' + (value / 1000000000000).toFixed(0) + 'T';
+                            } else if (value >= 1000000000) {
+                                return 'Rp ' + (value / 1000000000).toFixed(0) + 'B';
+                            } else if (value >= 1000000) {
+                                return 'Rp ' + (value / 1000000).toFixed(0) + 'M';
+                            } else {
+                                return 'Rp ' + value;
+                            }
+                        },
+                        color : '#ffffff'
+                    }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                            color: '#ffffff'
+                        },
+                        ticks: {
+                            color: '#ffffff'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffffff'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                var datasetLabel = tooltipItem.dataset.label;
+                                var currentValue = tooltipItem.raw;
+                                var previousValue = tooltipItem.dataIndex > 0 ? tooltipItem.chart.data.datasets[tooltipItem.datasetIndex].data[tooltipItem.dataIndex - 1] : null;
+                                var trend = '';
+    
+                                if (previousValue !== null) {
+                                    var difference = currentValue - previousValue;
+                                    var percentageChange = ((difference / previousValue) * 100).toFixed(2);
+                                    trend = difference > 0 ? 'Increased by ' + percentageChange + '%' : 'Decreased by ' + percentageChange + '%';
+                                }
+    
+                                return datasetLabel + ': ' + currentValue.toFixed(2) + ' (' + trend + ')';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // chart revenue vs earnings
+        var companyData = JSON.parse('{{ company_data|escapejs }}');
+        var ctx = document.getElementById('financialChart_1').getContext('2d');
+    
+        function getSegmentColors(values) {
+            let segmentColors = [];
+            for (let i = 1; i < values.length; i++) {
+                if (values[i] > values[i - 1]) {
+                    segmentColors.push('rgba(0, 200, 0, 1)'); // Green for increase
+                } else {
+                    segmentColors.push('rgb(255, 0, 0)'); // Red for decrease
+                }
+            }
+            return segmentColors;
+        }
+    
+        var revenueSegmentColors = getSegmentColors(companyData.total_equity);
+        var earningsSegmentColors = getSegmentColors(companyData.total_liabilities);
+    
+        function createDataset(label, data, baseColor, segmentColors) {
+            return {
+                label: label,
+                data: data,
+                borderColor: function(context) {
+                    return context.dataIndex > 0 ? segmentColors[context.dataIndex - 1] : baseColor; 
+                },
+                borderWidth: 3,
+                pointBackgroundColor: function(context) {
+                    if (context.dataIndex === 0) return baseColor; 
+                    return segmentColors[context.dataIndex - 1];
+                },
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                fill: false,  
+                pointStyle: function(context) {
+                    if (context.dataIndex === 0) return 'circle';
+                    return companyData[label.toLowerCase()][context.dataIndex] > companyData[label.toLowerCase()][context.dataIndex - 1] ? 'triangle' : 'rectRot';
+                }
+            };
+        }
+    
+        var datasets = [
+            createDataset('total_equity', companyData.total_equity, 'rgb(247, 155, 64, 0.8)', revenueSegmentColors),
+            createDataset('total_liabilities', companyData.total_liabilities, 'rgb(0, 191, 255, 0.8)', earningsSegmentColors),
+        ];
+    
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: companyData.years,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Rupiah',
+                            color: '#ffffff'
+                        },
+                        ticks: {
+                        callback: function(value, index, values) {
+                            if (value >= 1000000000000) {
+                                return 'Rp ' + (value / 1000000000000).toFixed(0) + 'T';
+                            } else if (value >= 1000000000) {
+                                return 'Rp ' + (value / 1000000000).toFixed(0) + 'B';
+                            } else if (value >= 1000000) {
+                                return 'Rp ' + (value / 1000000).toFixed(0) + 'M';
+                            } else {
+                                return 'Rp ' + value;
+                            }
+                        }, 
+                        color: '#ffffff'
+                    }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                            color: '#ffffff'
+                        },
+                        ticks: {color: '#ffffff'}
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffffff'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                var datasetLabel = tooltipItem.dataset.label;
+                                var currentValue = tooltipItem.raw;
+                                var previousValue = tooltipItem.dataIndex > 0 ? tooltipItem.chart.data.datasets[tooltipItem.datasetIndex].data[tooltipItem.dataIndex - 1] : null;
+                                var trend = '';
+    
+                                if (previousValue !== null) {
+                                    var difference = currentValue - previousValue;
+                                    var percentageChange = ((difference / previousValue) * 100).toFixed(2);
+                                    trend = difference > 0 ? 'Increased by ' + percentageChange + '%' : 'Decreased by ' + percentageChange + '%';
+                                }
+    
+                                return datasetLabel + ': ' + currentValue.toFixed(2) + ' (' + trend + ')';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+{% endblock %}

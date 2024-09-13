@@ -1,0 +1,278 @@
+{% extends "../layouts/base.html" %}    
+{% block stylesheets %}{% endblock stylesheets %}
+{% block content %}        
+<div class="content">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h1 class="card-category" style="font-size: 1.5rem; color: #ffffff; font-weight: 300;">Top 5 Companies by Share Value</h1>
+                </div>
+                <div class="">
+                    <div class="">
+                        <canvas id="topValueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h2 class="card-category" style="font-size: 1.5rem; color: #ffffff; font-weight: 300;">Top 5 Companies by Share Amount</h2>
+                </div>
+                <div class="">
+                    <div class="">
+                        <canvas id="topAmountChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-chart">
+                <div class="card-header ">
+                    <div class="row">
+                        <div class="col-sm-6 text-left">
+                            <h2 class="card-category" style="font-size: 1.5rem; color: #ffffff; font-weight: 300;">Share Ownership in Percentage Breakdown</h2>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="">
+                    <div class="">
+                        <div class="col-sm-6 text-right">
+                            <select class="form-control" id="companySelect"></select>
+                        </div>
+                        <canvas id="ownershipChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // process chart top 5 banks by share value
+        var labelsValue = JSON.parse('{{ labels_value|escapejs }}');
+        var shareValues = JSON.parse('{{ share_values|escapejs }}');
+        
+        var ctxValue = document.getElementById('topValueChart').getContext('2d');
+        new Chart(ctxValue, {
+            type: 'bar',
+            data: {
+                labels: labelsValue,
+                datasets: [{
+                    label: 'Share Value',
+                    data: shareValues,
+                    backgroundColor: 'rgba(75, 192, 192)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    color: '#ffffff'
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Share Value',
+                            color: '#ffffff'
+                        },
+                        ticks: {
+                            callback: function(value, index, values) {
+                                if (value >= 1000000000000) {
+                                    return 'Rp ' + (value / 1000000000000).toFixed(0) + 'T';
+                                } else if (value >= 1000000000) {
+                                    return 'Rp ' + (value / 1000000000).toFixed(0) + 'B';
+                                } else if (value >= 1000000) {
+                                    return 'Rp ' + (value / 1000000).toFixed(0) + 'M';
+                                } else {
+                                    return 'Rp ' + value;
+                                } 
+                            },
+                            color: '#ffffff' 
+                        }
+                    },
+                    x: {
+                        ticks: {color: '#ffffff '},
+                        title: {
+                            display: true,
+                            text: 'Company Name',
+                            color: '#ffffff'
+                        },
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffffff'
+                        }
+                    }
+                }
+            }
+        });
+
+        // process chart top 5 banks by share amount
+        var labelsAmount = JSON.parse('{{ labels_amount|escapejs }}');
+        var shareAmount = JSON.parse('{{ share_amount|escapejs }}');
+        
+        var ctxAmount = document.getElementById('topAmountChart').getContext('2d');
+        new Chart(ctxAmount, {
+            type: 'bar',
+            data: {
+                labels: labelsAmount,
+                datasets: [{
+                    label: 'Share Amount',
+                    data: shareAmount,
+                    backgroundColor: 'rgba(153, 102, 255)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                            display: true,
+                            text: 'Share Amount',
+                            color: '#ffffff'
+                        },
+                    ticks: {
+                        callback: function(value, index, values) {
+                            if (value >= 1000000000000) {
+                                return (value / 1000000000000).toFixed(0) + 'T';
+                            } else if (value >= 1000000000) {
+                                return (value / 1000000000).toFixed(0) + 'B';
+                            } else if (value >= 1000000) {
+                                return (value / 1000000).toFixed(0) + 'M';
+                            } else {
+                                return value;
+                            }
+                        },
+                        color: '#ffffff'
+                    },
+                },
+                x: {
+                        ticks: {color: '#ffffff '},
+                        title: {
+                            display: true,
+                            text: 'Company Name',
+                            color: '#ffffff'
+                        },
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffffff'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // process chart share percentage each bank by top 5 share value
+        var companyDetails = JSON.parse('{{ company_details_json|escapejs }}');
+        var companyNames = JSON.parse('{{ company_names|escapejs }}');
+        var defaultCompany = '{{ default_company|escapejs }}';
+
+        var companySelect = document.getElementById('companySelect');
+        companyNames.forEach(function(companyName) {
+            var option = document.createElement('option');
+            option.value = companyName;
+            option.textContent = companyName;
+            companySelect.appendChild(option);
+        });
+        
+        var ctxDetail = document.getElementById('ownershipChart').getContext('2d');
+        var ownershipChart = new Chart(ctxDetail, {
+            type: 'bubble',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Share Percentage',
+                    data: [],
+                    backgroundColor: 'rgba(255, 159, 64, 0.8)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'category',
+                        offset: true,
+                        title: {
+                            display: true,
+                            text: 'Ownership Name',
+                            color: '#ffffff'
+                        },
+                        ticks: {color : '#ffffff'}
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Share Percentage',
+                            color: '#ffffff'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return (value * 100).toFixed(2) + '%';  
+                            },
+                            color : '#ffffff'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Share Percentage',
+                        color: '#ffffff'  
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                var dataPoint = tooltipItem.raw;
+                                return dataPoint.ownership_name + ': ' + (dataPoint.y * 100).toFixed(2) + '%';
+                            }
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: '#ffffff'
+                        }
+                    }
+                }
+            }
+        });
+
+        function updateChart(companyName) {
+            if (companyName) {
+                var details = companyDetails[companyName];
+                var dataDetail = details.map(function(item) {
+                    return {
+                        x: item.x,  
+                        y: item.y,  
+                        r: item.r, 
+                        ownership_name: item.ownership_name
+                    };
+                });
+                ownershipChart.data.labels = details.map(item => item.ownership_name);
+                ownershipChart.data.datasets[0].data = dataDetail;
+                ownershipChart.options.plugins.title.text = companyName;
+                ownershipChart.update();
+            } 
+        }
+        updateChart(defaultCompany);
+        companySelect.addEventListener('change', function() {
+            var selectedCompany = this.value;
+            updateChart(selectedCompany);
+        });
+    </script>
+</div>  
+
+{% endblock %}

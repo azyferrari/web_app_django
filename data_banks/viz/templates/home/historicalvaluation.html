@@ -1,0 +1,115 @@
+{% extends "../layouts/base.html" %}
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-sm-9 text-left">
+                            <h5 class="card-category" style="font-size: 1.5rem; color: #ffffff; font-weight: 300;">Top 5 Companies by {{ selected_metric|upper }}</h5>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <form method="get" id="metric-form">
+                                <select style="border-color: #ffffff;" name="metric" id="metric-select" class="form-control" onchange="document.getElementById('metric-form').submit();">
+                                    {% for metric in metrics %}
+                                        <option value="{{ metric }}" {% if metric == selected_metric %}selected{% endif %}>{{ metric|upper }}</option>
+                                    {% endfor %}
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="">
+                        <canvas id="valuationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var companyData = JSON.parse('{{ company_data|escapejs }}');
+        var ctx = document.getElementById('valuationChart').getContext('2d');
+        var datasets = [];
+
+        var colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A6', '#FFC300'];
+
+        var index = 0;
+        for (var company in companyData) {
+            datasets.push({
+                label: company,
+                data: companyData[company].values,  
+                borderColor: colors[index],          
+                fill: false,
+                pointRadius: 4,                      
+                pointHoverRadius: 6,                 
+                pointBackgroundColor: colors[index], 
+                pointBorderColor: '#fff',
+                pointBorderWidth: 1
+            });
+            index++;
+        }
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: companyData[Object.keys(companyData)[0]].years, 
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        ticks: {
+                            display: false,
+                        },
+                        grid: {
+                            display: false 
+                        }
+                    },
+
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                            color: '#ffffff'
+                        },
+                        ticks:{
+                            color: '#ffff',
+                            font : {size: 14}
+                        } 
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color:'#ffffff'
+                        }
+                    },
+                    datalabels: {
+                        align: 'bottom',                 
+                        anchor: 'end',                
+                        formatter: function(value) {  
+                            return value.toFixed(2);  
+                        },
+                        color: '#fff',                
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
+                },
+                elements: {
+                    point: {
+                        display: true,  
+                    }
+                }
+            },
+            plugins: [ChartDataLabels],  
+        });
+    </script>
+</div>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "../layouts/base.html" %}    
+
+{% block content %} 
+<div class="content">
+    <div class="row">
+        <div class="col-6">
+            <div class="card card-chart">
+                <div class="card-header ">
+                    <div class="row">
+                        <div class="col-sm-9 text-left">
+                            <h5 class="card-category" style="font-size: 1.5rem; color: #ffffff; font-weight: 300;">Top 5 Companies by Revenue</h5>
+                            <!-- <h2 class="card-title">Performance</h2> -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="">
+                    <div class="">
+                        <canvas id="topMarketCapChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card card-chart">
+                <div class="card-header ">
+                    <div class="row">
+                        <div class="col-sm-9 text-left">
+                            <h5 class="card-category" style="font-size: 1.5rem; color: #ffffff; font-weight: 300;">Top 5 Company Employee Num</h5>
+                            <!-- <h2 class="card-title">Performance</h2> -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="">
+                    <div class="">
+                        <canvas id="topEmployeeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var labels_market_cap = JSON.parse('{{ labels_market_cap|escapejs }}');
+        var market_cap = JSON.parse('{{ market_cap|escapejs }}');
+
+        var ctx_market_cap = document.getElementById('topMarketCapChart').getContext('2d');
+        new Chart(ctx_market_cap, {
+            type: 'doughnut',
+            data: {
+                labels: labels_market_cap,
+                datasets: [{
+                    label: 'Market Cap',
+                    data: market_cap,
+                    backgroundColor: ['rgb(0, 255, 255, 0.9)', 'rgb(255, 255, 0, 0.8)', 'rgb(0, 255, 127, 0.85)', 'rgb(138, 43, 226, 0.9)', 'rgb(255, 69, 0, 0.85)'],
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color:'#ffffff'
+                        }
+                    }
+                },
+
+                scales: {
+                    y: {
+                        ticks:{
+                            display: false
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var labels_employee_num = JSON.parse('{{ labels_employee_num|escapejs }}');
+        var employee_num = JSON.parse('{{ employee_num|escapejs }}');
+
+        var ctx_employee_num = document.getElementById('topEmployeeChart').getContext('2d');
+        new Chart(ctx_employee_num, {
+            type: 'pie',
+            data: {
+                labels: labels_employee_num,
+                datasets: [{
+                    label: 'Employee Num',
+                    data: employee_num,
+                    backgroundColor: ['rgb(0, 255, 255, 0.9)', 'rgb(255, 255, 0, 0.8)', 'rgb(0, 255, 127, 0.85)', 'rgb(138, 43, 226, 0.9)', 'rgb(255, 69, 0, 0.85)'],
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color:'#ffffff'
+                        }
+                    }
+                },
+
+                scales: {
+                    y: {
+                        ticks:{
+                            display: false
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</div> 
+{% endblock %}

@@ -1,0 +1,4 @@
+.env
+/data_banks/data_banks/__pycache__
+/data_banks/viz/__pycache__
+.vscode/

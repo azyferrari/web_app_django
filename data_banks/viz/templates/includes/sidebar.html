@@ -1,0 +1,33 @@
+<div class="sidebar">
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="{% if 'index' in segment %} active {% endif %}">
+                <a href="{% url 'home' %}">
+                    <i class=""></i>
+                    <p style="font-size: 1rem; color: #000000; font-weight:600">Ownership Share</p>
+                </a>
+            </li>
+
+            <li class="{% if 'historicalfinancials' in segment %} active {% endif %}">
+              <a href="{% url 'historicalfinancials' %}">
+                <i class=""></i>
+                <p style="font-size: 1rem; color: #000000; font-weight:600">Historical Financials</p>
+              </a>
+            </li>
+
+            <li class="{% if 'historicalvaluation' in segment %} active {% endif %}">
+                <a href="{% url 'historicalvaluation' %}">
+                  <i class=""></i>
+                  <p style="font-size: 1rem; color: #000000; font-weight:600">Historical Valuation</p>
+                </a>
+            </li>
+
+            <li class="{% if 'overview' in segment %} active {% endif %}">
+                <a href="{% url 'overview' %}">
+                  <i class=""></i>
+                  <p style="font-size: 1rem; color: #000000; font-weight:600">Overview</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
